@@ -73,7 +73,7 @@ exec(
         console.log('npm init -- done\n');
 
         // installing dependencies
-        console.log('Installing deps -- it might take a few minutes..');
+        console.log('Installing deps -- it might take a while..');
         const devDeps = getDeps(packageJson.devDependencies);
         const deps = getDeps(packageJson.dependencies);
         exec(
