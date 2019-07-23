@@ -52,3 +52,16 @@ To test the extension
 4. It will load our chrome extension like this ![extension](https://lh6.googleusercontent.com/G7cS6cLPh83gxAGpt33idJSlB4oqhHr3xx_BLMuRqZU8aCFi35THU0pigrO099LqCbuBszECKYWGrCBxIzuyN5YIwrg8v8wjTWLNupk9i-5jLfCu7vb6KXCraOaGeOFiljUH51hJ "extension")
 
 5. Click on the icon next to the url section and it should render this popup ![result](http://codementor.tech/wp-content/uploads/2019/07/Screen-Shot-2019-07-18-at-8.19.54-PM.png "result")
+
+# Project Structure
+
+* `src` folder contains everything other than boilerplate code
+* `assets` folder contains static assets like css, js files, images and icons
+* `index.html` is the default_popup of chrome extension
+* `App.js` contains the root component, It renders the TodoList component
+* `TodoList.js` contains the TodoList component with all the logic for adding and removing the task from the list
+
+# Demo
+
+[Click here to add TodoList extension to your chrome browser](https://chrome.google.com/webstore/detail/todo-list-chrome-extensio/mpodmjidjogbkfdificcepecjpdaccog) - Please don't forget to give it 5-star rating ;)
+![result](http://codementor.tech/wp-content/uploads/2019/07/Screen-Shot-2019-07-18-at-8.24.19-PM.png "result")
