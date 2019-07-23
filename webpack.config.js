@@ -22,7 +22,6 @@ module.exports = {
         }),
         new CopyWebpackPlugin([
             { from: './src/manifest.json', to:'./', flatten:true },
-            { from: './src/background.js', to:'./', flatten:true },
             { from: './src/assets/img/icons/*', to:'./', flatten:true }
         ], {
             copyUnmodified: true

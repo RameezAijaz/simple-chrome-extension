@@ -3,7 +3,6 @@ import ListGroup from 'react-bootstrap/ListGroup';
 import InputGroup from 'react-bootstrap/InputGroup';
 import FormControl from 'react-bootstrap/FormControl';
 import Button from 'react-bootstrap/Button';
-import {getTodoList, setTodoList} from './DataService';
 
 function CrossButton(props){
     return(<Button type="button" className="close" aria-label="Close" onClick={()=>props.removeItem(props.itemKey)}><span aria-hidden="true">&times;</span></Button>)
@@ -13,49 +12,41 @@ class TodoList extends React.Component {
         super(props);
         this.state = {todoListItems:[]};
     }
-    async getTodoList(){
-        const items = await getTodoList()||[];
-        this.setState({todoListItems: items});
+    componentDidMount(){
+        chrome.storage.local.get(['todoListItems'], (result)=>{
+            const todoListItems = result.todoListItems || [];
+            this.setState({todoListItems});
+        });
+    }
+    removeItem(key){
+        this.setState((prevState)=>{
+            let items = prevState.todoListItems;
+            items.splice(key, 1);
+            chrome.storage.local.set({todoListItems:items});
+            return {todoListItems: items}
+
+        });
     }
     addItem(){
         if(!this.state.item)
             return;
         this.setState((prevState)=>{
-
             let items = prevState.todoListItems;
             items.push(prevState.item);
-            setTodoList(items);
+            chrome.storage.local.set({todoListItems:items});
             return {todoListItems: items, item:''};
         });
-    }
-
-    componentDidMount(){
-        this.getTodoList.call(this);
-    }
-    removeItem(key){
-        this.setState((prevState)=>{
-
-            let items = prevState.todoListItems;
-            items.splice(key, 1);
-            setTodoList(items);
-            return {todoListItems: items}
-
-        });
-    }
-    getListItems(data){
-        if(!data || data.length === 0)
-            return <p>Todo list is empty.</p>;
-
-        return(<ListGroup className="todo-list">
-            {data.map((l,i) => <ListGroup.Item key={i}>{`${i+1}) ${l}`}<CrossButton itemKey={i} removeItem={this.removeItem.bind(this)}/></ListGroup.Item>)}
-                </ListGroup>);
     }
     render(){
         return(
             <div className="card todo-list-container">
                 <div className="card-header"><h3 className="card-title">Todo List</h3></div>
                 <div className="card-body">
-                    {this.getListItems(this.state.todoListItems)}
+                    <ListGroup className="todo-list">
+                        {this.state.todoListItems.length===0 ?
+                            <p>Todo list is empty.</p> :
+                            this.state.todoListItems.map((l,i) => <ListGroup.Item key={i}>{`${i+1}) ${l}`}<CrossButton itemKey={i} removeItem={this.removeItem.bind(this)}/></ListGroup.Item>)}
+                    </ListGroup>
                 </div>
 
                 <div className="card-footer">
