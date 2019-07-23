@@ -11,7 +11,14 @@
   },
   "keywords": [
     "chrome",
-    "scaffold"
+    "scaffold",
+    "extension",
+    "react",
+    "bootstrap",
+    "webpack",
+    "jquery",
+    "bootstrap",
+    "babel"
   ],
   "bin": {
     "simple-chrome-extension": "bin/scaffold.js"
