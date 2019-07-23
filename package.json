@@ -14,10 +14,14 @@
     "scaffold"
   ],
   "bin": {
-    "simple-chrome-extension": "./bin/sra.js"
+    "simple-chrome-extension": "bin/scaffold.js"
   },
   "author": "Rameez Aijaz <ramez.aijaz@gmail.com> (https://www.rameezaijaz.com)",
-  "license": "MIT",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/RameezAijaz/simple-chrome-extension"
+  },
   "devDependencies": {
     "@babel/core": "^7.5.4",
     "@babel/preset-react": "^7.0.0",

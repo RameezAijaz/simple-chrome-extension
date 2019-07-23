@@ -7,13 +7,9 @@ module.exports = {
     mode: 'development',
     entry: {
         jquery: 'jquery',
-        app: './src/App.js',
-        print: './src/print.js'
+        app: './src/App.js'
     },
     devtool: 'inline-source-map',
-    devServer: {
-        contentBase: './dist'
-    },
     plugins: [
         new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
