@@ -1,6 +1,6 @@
 {
   "name": "simple-chrome-extension",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Simple chrome extension to manage todo list",
   "main": "src/App.js",
   "scripts": {
