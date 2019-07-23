@@ -10,7 +10,7 @@ function CrossButton(props){
 class TodoList extends React.Component {
     constructor(props){
         super(props);
-        this.state = {todoListItems:[]};
+        this.state = {todoListItems:[], item:''};
     }
     componentDidMount(){
         chrome.storage.local.get(['todoListItems'], (result)=>{
