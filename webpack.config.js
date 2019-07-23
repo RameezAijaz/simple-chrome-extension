@@ -13,7 +13,7 @@ module.exports = {
     plugins: [
         new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
-            title: 'Output Management',
+            title: 'todo-list',
             template:'./src/index.html'
         }),
         new CopyWebpackPlugin([
