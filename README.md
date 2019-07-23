@@ -65,3 +65,7 @@ To test the extension
 
 [Click here to add TodoList extension to your chrome browser](https://chrome.google.com/webstore/detail/todo-list-chrome-extensio/mpodmjidjogbkfdificcepecjpdaccog) - Please don't forget to give it 5-star rating ;)
 ![result](http://codementor.tech/wp-content/uploads/2019/07/Screen-Shot-2019-07-18-at-8.24.19-PM.png "result")
+
+# Acknowledgments
+
+* Inspired from https://github.com/Kornil/simple-react-app
