@@ -11,13 +11,6 @@ const scripts = `"build": "webpack --mode production",
     "watch": "webpack --watch",
     "test": "echo \\"Error: no test specified\\" && exit 1"`;
 
-/**
- * we pass the object key dependency || devdependency to this function
- * @param {object} deps object key that we want to extract
- * @returns {string} a string of 'dependencies@version'
- * that we can attach to an `npm i {value}` to install
- * every dep the exact version speficied in package.json
- */
 const getDeps = deps =>
     Object.entries(deps)
         .map(dep => `${dep[0]}@${dep[1]}`)
@@ -36,12 +29,11 @@ if(!process.argv[2])
     return;
 
 }
-// create folder and initialize npm
 exec(
     `mkdir ${process.argv[2]} && cd ${process.argv[2]} && npm init -f`,
     (initErr, initStdout, initStderr) => {
         if (initErr) {
-            console.error(`Everything was fine, then it wasn't:
+            console.error(`Error while creating new project directory: 
     ${initErr}`);
             return;
         }
@@ -62,9 +54,6 @@ exec(
                 .createReadStream(path.join(__dirname, `../${filesToCopy[i]}`))
                 .pipe(fs.createWriteStream(`${process.argv[2]}/${filesToCopy[i]}`));
         }
-
-        // npm will remove the .gitignore file when the package is installed, therefore it cannot be copied
-        // locally and needs to be downloaded. See https://github.com/Kornil/simple-react-app/issues/12
         https.get(
             'https://raw.githubusercontent.com/RameezAijaz/simple-chrome-extension/master/.gitignore',
             (res) => {
@@ -91,7 +80,7 @@ exec(
             `cd ${process.argv[2]} && npm i -D ${devDeps} && npm i -S ${deps}`,
             (npmErr, npmStdout, npmStderr) => {
                 if (npmErr) {
-                    console.error(`it's always npm, ain't it?
+                    console.error(`Error while installing dependencies: 
       ${npmErr}`);
                     return;
                 }
